@@ -2,7 +2,6 @@ package dev.igoyek.eye;
 
 import com.jagrosh.jdautilities.command.CommandClient;
 import com.jagrosh.jdautilities.command.CommandClientBuilder;
-import dev.igoyek.eye.listener.MemberJoinListener;
 import dev.igoyek.eye.command.AvatarCommand;
 import dev.igoyek.eye.command.BanCommand;
 import dev.igoyek.eye.command.BotInfoCommand;
@@ -15,10 +14,9 @@ import dev.igoyek.eye.command.SayCommand;
 import dev.igoyek.eye.command.ServerInfoCommand;
 import dev.igoyek.eye.config.AppConfig;
 import dev.igoyek.eye.config.ConfigFactory;
-import dev.igoyek.eye.config.DatabaseConfig;
-import dev.igoyek.eye.database.DatabaseManager;
 import dev.igoyek.eye.guildstats.GuildStatisticsService;
 import dev.igoyek.eye.guildstats.GuildStatisticsTask;
+import dev.igoyek.eye.listener.MemberJoinListener;
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.JDABuilder;
 import net.dv8tion.jda.api.OnlineStatus;
@@ -31,28 +29,16 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.File;
-import java.sql.SQLException;
 import java.time.Duration;
 import java.util.EnumSet;
 import java.util.Timer;
 
 public class DiscordApp {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(DiscordApp.class);
-
     public static void main(String... args) throws InterruptedException {
         ConfigFactory configFactory = new ConfigFactory();
 
         AppConfig appConfig = configFactory.produceConfig(AppConfig.class, new File("config.yml"));
-        DatabaseConfig databaseConfig = configFactory.produceConfig(DatabaseConfig.class, new File("database.yml"));
-
-        try {
-            DatabaseManager databaseManager = new DatabaseManager(databaseConfig, new File("database"));
-            databaseManager.connect();
-
-        } catch (SQLException exception) {
-            LOGGER.error("Failed to connect to database", exception);
-        }
 
         CommandClient commandClient = new CommandClientBuilder()
                 .setOwnerId(appConfig.topOwnerId)
