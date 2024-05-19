@@ -28,7 +28,7 @@ class MemberJoinListener(private val appConfig: AppConfig) : ListenerAdapter() {
             event.guild.addRoleToMember(event.member, it).queue()
         }
 
-        event.guild.getTextChannelById(appConfig.channelSettings.welcomeChannelId)
+        event.guild.getTextChannelById(appConfig.channelSettings.auditLogsChannelId)
             ?.sendMessageEmbeds(embed)
             ?.queue()
     }

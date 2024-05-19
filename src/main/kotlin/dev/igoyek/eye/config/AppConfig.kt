@@ -36,15 +36,9 @@ class AppConfig : OkaeriConfig() {
 
         @Comment("# The error color of the embed")
         var errorColor: String = "#ec7171"
-
-        @Comment("# The server boost color of the embed")
-        var boostColor: String = "#f8aaff"
     }
 
     class ChannelSettings : OkaeriConfig() {
-        @Comment("# The channel ID of the welcome channel")
-        var welcomeChannelId: Long = 1238570271158308904L
-
         @Comment("# The channel ID of the audit logs channel")
         var auditLogsChannelId: Long = 1238984284057112667L
 
