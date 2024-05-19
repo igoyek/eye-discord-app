@@ -6,7 +6,7 @@ plugins {
 }
 
 group = "dev.igoyek"
-version = "1.1.0"
+version = "1.0.0"
 
 repositories {
     mavenCentral()
@@ -31,18 +31,6 @@ dependencies {
 
     // panda utilities
     implementation("org.panda-lang:panda-utilities:0.5.2-alpha")
-
-    // ORMLite
-    implementation("com.j256.ormlite:ormlite-core:6.1")
-    implementation("com.j256.ormlite:ormlite-jdbc:6.1")
-
-    // hikaricp
-    implementation("com.zaxxer:HikariCP:5.1.0")
-
-    // database drivers
-    implementation("mysql:mysql-connector-java:8.0.33")
-    implementation("com.h2database:h2:2.2.224")
-    implementation(kotlin("stdlib-jdk8"))
 }
 
 java {
@@ -51,9 +39,12 @@ java {
 tasks.shadowJar {
     archiveFileName.set("Eye ${project.version}.jar")
 
+    mergeServiceFiles()
+    minimize()
+
     manifest {
         attributes(
-            "Main-Class" to "dev.igoyek.eye.DiscordApp"
+            "Main-Class" to "dev.igoyek.eye.DiscordAppLauncher"
         )
     }
 }

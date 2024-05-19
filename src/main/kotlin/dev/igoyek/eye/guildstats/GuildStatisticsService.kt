@@ -11,8 +11,8 @@ class GuildStatisticsService(private val appConfig: AppConfig, private val jda: 
     fun displayStats() {
         val guild: Guild = jda.getGuildById(appConfig.guildId) ?: return
 
-        for ((key, value) in appConfig.voiceChannelStatistics.members) {
-            val channel: VoiceChannel = guild.getVoiceChannelById(key) ?: continue
+        appConfig.voiceChannelStatistics.members.forEach() { (key, value) ->
+            val channel: VoiceChannel = guild.getVoiceChannelById(key) ?: return
 
             val formatter = Formatter()
                 .register("{MEMBERS_SIZE}", guild.memberCache.stream()
