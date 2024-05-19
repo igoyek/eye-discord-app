@@ -10,10 +10,6 @@ class TagFormatter private constructor() {
         private const val CHANNEL_TAG = "<#%s>"
         private const val TIMESTAMP_TAG = "<t:%d:F>"
 
-        init {
-            throw UnsupportedOperationException("This class cannot be instantiated")
-        }
-
         @JvmStatic
         fun memberTag(user: User): String {
             return String.format(MEMBER_TAG, user.id)
