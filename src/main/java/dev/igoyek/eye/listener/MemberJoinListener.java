@@ -1,4 +1,4 @@
-package dev.igoyek.eye.event;
+package dev.igoyek.eye.listener;
 
 import dev.igoyek.eye.config.AppConfig;
 import dev.igoyek.eye.util.TagFormatter;

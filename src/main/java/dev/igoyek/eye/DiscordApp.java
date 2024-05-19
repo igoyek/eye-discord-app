@@ -2,7 +2,7 @@ package dev.igoyek.eye;
 
 import com.jagrosh.jdautilities.command.CommandClient;
 import com.jagrosh.jdautilities.command.CommandClientBuilder;
-import dev.igoyek.eye.event.MemberJoinListener;
+import dev.igoyek.eye.listener.MemberJoinListener;
 import dev.igoyek.eye.command.AvatarCommand;
 import dev.igoyek.eye.command.BanCommand;
 import dev.igoyek.eye.command.BotInfoCommand;
