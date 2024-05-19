@@ -30,7 +30,7 @@ public class ServerInfoCommand extends SlashCommand {
         String members = String.valueOf(guild.getMemberCount());
         String roles = String.valueOf(guild.getRoles().size());
         String channels = String.valueOf(guild.getChannels().size());
-        String createdAt = TagFormatter.offsetTime(guild.getTimeCreated());
+        String createdAt = TagFormatter.timestampTag(guild.getTimeCreated());
 
         MessageEmbed embed = new EmbedBuilder()
                 .setTitle(guild.getName() + "'s information")

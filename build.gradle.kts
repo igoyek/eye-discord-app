@@ -2,6 +2,7 @@ plugins {
     `java-library`
 
     id("com.github.johnrengelman.shadow") version "8.1.1"
+    kotlin("jvm")
 }
 
 group = "dev.igoyek"
@@ -41,11 +42,10 @@ dependencies {
     // database drivers
     implementation("mysql:mysql-connector-java:8.0.33")
     implementation("com.h2database:h2:2.2.224")
+    implementation(kotlin("stdlib-jdk8"))
 }
 
 java {
-    sourceCompatibility = JavaVersion.VERSION_17
-    targetCompatibility = JavaVersion.VERSION_17
 }
 
 tasks.shadowJar {
@@ -56,4 +56,8 @@ tasks.shadowJar {
             "Main-Class" to "dev.igoyek.eye.DiscordApp"
         )
     }
+}
+
+kotlin {
+    jvmToolchain(17)
 }
