@@ -6,7 +6,7 @@ plugins {
 }
 
 group = "dev.igoyek"
-version = "1.0.1"
+version = "1.1.0"
 
 repositories {
     mavenCentral()
@@ -49,7 +49,7 @@ java {
 }
 
 tasks.shadowJar {
-    archiveFileName.set("Eye.jar")
+    archiveFileName.set("Eye ${project.version}.jar")
 
     manifest {
         attributes(
